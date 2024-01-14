@@ -1,13 +1,13 @@
 import React from 'react'
-import SignUp from '../pages/SignUp/SignUp'
+import Home from '../pages/Home/Home'
 import './App.css'
 
 function App() {
  
 
   return (
-<div>Student Management System
-<SignUp/>
+<div>
+<Home/>
 </div>
 
   )
