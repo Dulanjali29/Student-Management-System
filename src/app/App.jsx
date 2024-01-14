@@ -3,7 +3,8 @@ import Home from '../pages/Home/Home'
 import './App.css'
 import SignUp from '../pages/SignUp/SignUp'
 import Signin from '../pages/Signin/Sigin'
-import { Box } from '@mui/material'
+import  Box  from '@mui/material/Box';
+
 
 function App() {
  
@@ -13,9 +14,10 @@ function App() {
   {/* <Box sx={{display:'flex',justifyContent:'center',marginTop:5}}>
     <SignUp/>
   </Box> */}
-  <Box sx={{display:'flex',justifyContent:'center'}}>
+  {/* <Box sx={{display:'flex',justifyContent:'center'}}>
     <Signin/>
-  </Box>
+  </Box> */}
+  <Home/>
 </div>
 
   )
