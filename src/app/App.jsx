@@ -10,12 +10,12 @@ function App() {
 
   return (
 <div>
-  <Box sx={{display:'flex',justifyContent:'center',marginTop:5}}>
+  {/* <Box sx={{display:'flex',justifyContent:'center',marginTop:5}}>
     <SignUp/>
-  </Box>
-  {/* <Box sx={{display:'flex',justifyContent:'center'}}>
-    <Signin/>
   </Box> */}
+  <Box sx={{display:'flex',justifyContent:'center'}}>
+    <Signin/>
+  </Box>
 </div>
 
   )

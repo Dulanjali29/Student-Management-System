@@ -12,8 +12,8 @@ export default function Signin(){
                 <Box sx={{display:'flex', justifyContent:'center'}}>
                 <Avatar
         alt="Remy Sharp"
-        src="../src/assets/icons8-user-64.png"
-        sx={{ width: 50, height: 50 }}
+        src="../src/assets/user1.png"
+        sx={{ width: 60, height: 60 }}
       />   
                 </Box>
                 <Box sx={{display:'flex',justifyContent:'center'}}>
