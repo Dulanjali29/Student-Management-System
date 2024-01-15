@@ -24,6 +24,8 @@ import routes from '../../common/Navigation/routes';
 import Dashboard from './Dashboard';
 import StudentView from '../StudentView/StudentView';
 
+// import logo from "../../assets/logo.png"
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -102,15 +104,16 @@ export default function Home() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-    const getRoutes = (value) => 
-   value.map((val)=>
-   <Route key={val.key} path={val.path} element={val.component} icons={val.icon}/>
-   )
+    const getRoutes = (value) =>
+        value.map((val) =>
+            <Route key={val.key} path={val.path} element={val.component} icons={val.icon} />
+        )
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open}>
                 <Toolbar>
+                 
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -124,7 +127,17 @@ export default function Home() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Student Management System
+                   {/* < Box
+                        component="img"
+                        sx={{
+                            height: 60,
+                            width:60
+                        }}
+                        alt="your logo."
+                        src={logo}
+                    /> */}
+                       Sarasavi Institute
+
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -137,38 +150,38 @@ export default function Home() {
                 <Divider />
                 <List>
                     {
-                   routes.map((val)=>(
-                   <Link key={val.key} to={val.path} style={{ textDecoration: 'none' }}>
-                        <ListItem disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon >
-                                    {val.icon}
-                                    {/* <InboxIcon/> */}
-                                </ListItemIcon >
-                                <ListItemText primary={val.name} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                    </Link>
-                   ))}
-                    
+                        routes.map((val) => (
+                            <Link key={val.key} to={val.path} style={{ textDecoration: 'none' }}>
+                                <ListItem disablePadding sx={{ display: 'block' }}>
+                                    <ListItemButton
+                                        sx={{
+                                            minHeight: 48,
+                                            justifyContent: open ? 'initial' : 'center',
+                                            px: 2.5,
+                                        }}
+                                    >
+                                        <ListItemIcon >
+                                            {val.icon}
+                                            {/* <InboxIcon/> */}
+                                        </ListItemIcon >
+                                        <ListItemText primary={val.name} sx={{ opacity: open ? 1 : 0 }} />
+                                    </ListItemButton>
+                                </ListItem>
+                            </Link>
+                        ))}
+
 
                 </List>
                 <Divider />
 
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 ,backgroundColor:1000}}>
+            <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor: 1000 }}>
                 <DrawerHeader />
 
                 <Box>
                     <Routes>
                         {getRoutes(routes)}
-                        <Route  path={'*'} element={<Navigate to={'/dasboard'} />} />
+                        <Route path={'*'} element={<Navigate to={'/dasboard'} />} />
                         {/* <Route  path={'/dashboard'} element={<Dashboard/>}/>
                         <Route  path={'/studentview'} element={<StudentView/>}/> */}
                     </Routes>
