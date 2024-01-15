@@ -1,9 +1,10 @@
 import React from 'react'
-import Home from '../pages/Dashboard/Dashboard'
+import Dashboard from '../pages/Dashboard/Dashboard'
 import './App.css'
 import SignUp from '../pages/SignUp/SignUp'
 import Signin from '../pages/Signin/Sigin'
 import  Box  from '@mui/material/Box';
+
 
 
 function App() {
@@ -11,13 +12,13 @@ function App() {
 
   return (
 <div>
-  {/* <Box sx={{display:'flex',justifyContent:'center',marginTop:5}}>
+  <Box sx={{display:'flex',justifyContent:'center',marginTop:5}}>
     <SignUp/>
-  </Box> */}
+  </Box>
   {/* <Box sx={{display:'flex',justifyContent:'center'}}>
     <Signin/>
   </Box> */}
-  <Home/>
+  {/* <Dashboard/> */}
 </div>
 
   )

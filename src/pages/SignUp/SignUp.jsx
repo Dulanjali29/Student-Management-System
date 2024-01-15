@@ -38,6 +38,7 @@ export default function SignUp(){
                 sx={{margin:1}}
                 fullWidth
                  id="outlined-basic"
+                 type='password'
                   label="Password * " 
                   variant="outlined" 
                   />

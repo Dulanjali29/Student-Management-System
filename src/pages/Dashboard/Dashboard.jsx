@@ -16,13 +16,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+
 import { Route, Routes, Navigate, Link } from 'react-router-dom'
 import routes from '../../common/Navigation/routes';
 
-import Dashboard from './Dashboard';
-import StudentView from '../StudentView/StudentView';
+
+
 
 // import logo from "../../assets/logo.png"
 
@@ -93,7 +92,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-export default function Home() {
+export default function Dashboard() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -109,6 +108,7 @@ export default function Home() {
             <Route key={val.key} path={val.path} element={val.component} icons={val.icon} />
         )
     return (
+        
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open}>
@@ -136,7 +136,7 @@ export default function Home() {
                         alt="your logo."
                         src={logo}
                     /> */}
-                       Sarasavi Institute
+                      Student Management System
 
                     </Typography>
                 </Toolbar>
