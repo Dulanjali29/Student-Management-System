@@ -24,14 +24,14 @@ export default function Signin(){
                  <TextField
                 sx={{margin:1}}
                 fullWidth
-                 id="outlined-basic"
+                 id="username"
                   label="E mail * " 
                   variant="outlined" 
                   />
                   <TextField
                 sx={{margin:1}}
                 fullWidth
-                 id="outlined-basic"
+                 id="password"
                  type='password'
                   label="Password * " 
                   variant="outlined" 

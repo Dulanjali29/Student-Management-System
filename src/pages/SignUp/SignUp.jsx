@@ -23,21 +23,21 @@ export default function SignUp(){
                 <TextField
                 sx={{margin:1}}
                 fullWidth
-                 id="outlined-basic"
+                 id="usernm"
                   label="Name *" 
                   variant="outlined" 
                   />
                  <TextField
                 sx={{margin:1}}
                 fullWidth
-                 id="outlined-basic"
+                 id="email"
                   label="E mail * " 
                   variant="outlined" 
                   />
                   <TextField
                 sx={{margin:1}}
                 fullWidth
-                 id="outlined-basic"
+                 id="oupassword"
                  type='password'
                   label="Password * " 
                   variant="outlined" 
