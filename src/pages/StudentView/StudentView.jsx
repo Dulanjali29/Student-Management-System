@@ -79,14 +79,14 @@ export default function StudentView() {
     return (
         <div >
             <Typography
-                sx={{ flex: '1 1 100%' }}
+                sx={{ flex: '1 1 100%' ,color:'#4169E1'}}
                 variant="h6"
                 id="tableTitle"
                 component="div"
             >
                 Student Details
             </Typography>
-            <Box sx={{ flexGrow: 1 ,backgroundColor:'red'}}>
+            <Box sx={{ flexGrow: 1,paddingTop:3}}>
                 <AppBar position="static">
                     <Toolbar sx={{backgroundColor:'#6495ED'}}>
                         Search Student
@@ -105,7 +105,7 @@ export default function StudentView() {
             </Box>
           
 
-                <div style={{ height: 400, width: '100%' ,paddingTop:20}}>
+                <div style={{ height: 400, width: '100%' ,paddingTop:30}}>
                     <DataGrid
                         rows={rows}
                         columns={columns}
