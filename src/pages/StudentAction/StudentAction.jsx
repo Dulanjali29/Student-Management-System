@@ -20,39 +20,44 @@ export default function StudentAction() {
                 <Box sx={{ display: 'flex', justifyContent: 'center' ,color:'#4169E1' }}>
                     <h1 >Student Details</h1>
                 </Box >
-                <Box sx={{ display: 'flex', justifyContent: 'between', marginRight: 2 }}>
+                <Box >
+                    <Box>
                     <TextField
-                        sx={{ margin: 1, width: 600 }}
+                        sx={{ margin: 1, width: 400 }}
 
                         id="student_name"
                         label="Name *"
                         variant="outlined"
                     />
                     <TextField
-                        sx={{ margin: 1, width: 600 }}
+                        sx={{ margin: 1, width: 400 }}
                         fullWidth
                         id="student_age"
                         label="Age * "
                         variant="outlined"
                     />
-                    <TextField
-                        sx={{ margin: 1, width: 600 }}
+                    </Box>
+                   <Box>
+                   <TextField
+                        sx={{ margin: 1, width: 400 }}
                         fullWidth
                         id="student_address"
                         label="Address * "
                         variant="outlined"
                     />
                     <TextField
-                        sx={{ margin: 1, width: 600 }}
+                        sx={{ margin: 1, width: 400 }}
                         fullWidth
                         id="student_contact"
                         label="Contact NO * "
                         variant="outlined"
                     />
+                   </Box>
+                   
 
                 </Box>
 
-                <Box sx={{ display: 'flex', justifyContent: 'end' ,marginTop:5,marginRight:3 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'end' ,marginTop:5,marginRight:10 }}>
                     <Box sx={{ marginTop: 2, width: 200, marginLeft: 1 }}>
                         <Button variant="contained" fullWidth >Save</Button>
                     </Box>
