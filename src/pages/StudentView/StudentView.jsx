@@ -32,7 +32,7 @@ const columns = [
 
 const rows = [
     { id: 1, name: 'Dulanji', age: 45, address: 'Dodangaslanda', contact: '0774545458' },
-
+    { id: 2, name: 'Gihani', age: 35, address: 'kandy', contact: '0778686867' },
 ];
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -109,12 +109,7 @@ export default function StudentView() {
                     <DataGrid
                         rows={rows}
                         columns={columns}
-                        // initialState={{
-                        //     pagination: {
-                        //         paginationModel: { page: 0, pageSize: 5 },
-                        //     },
-                        // }}
-                        // pageSizeOptions={[5, 10]}
+                      
                         checkboxSelection
                     />
                 </div>

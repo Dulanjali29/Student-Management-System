@@ -5,7 +5,9 @@ import { TextField } from "@mui/material";
 import Card from "@mui/material/Card";
 import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
-export default function Signin(){
+import { Link } from 'react-router-dom';
+
+export default function SignIn(){
     return(
         <div>
              <Card sx={{minWidth:300,maxWidth:350,padding:5}}   >
@@ -40,10 +42,13 @@ export default function Signin(){
                 
 
                   <Box sx={{display:'flex',justifyContent:'center',marginTop:2 ,width:330,marginLeft:1}}>
-                  <Button variant="contained" fullWidth >SIGN UP</Button>
+                  <Button variant="contained" fullWidth >SIGN IN</Button>
                   </Box>
                   <Box sx={{fontSize:'0.1rem',display:'flex',justifyContent:'end',marginTop:2}}>
+                  
+                  <Link to={'/signup'}>
                   <Button variant="text" >Don't have an account? Sign Up</Button>
+                  </Link>
                   </Box>
              </Card>
         </div>
