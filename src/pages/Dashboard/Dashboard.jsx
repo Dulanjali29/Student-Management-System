@@ -16,6 +16,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { Button } from '@mui/material';
 
 import { Route, Routes, Navigate, Link } from 'react-router-dom'
 import routes from '../../common/Navigation/routes';
@@ -107,6 +108,11 @@ export default function Dashboard() {
         value.map((val) =>
             <Route key={val.key} path={val.path} element={val.component} icons={val.icon} />
         )
+
+        const logoutAction=()=>{
+            localStorage.removeItem('stmToken');
+            window.location.reload();
+        }
     return (
         
         <Box sx={{ display: 'flex' }}>
@@ -139,6 +145,8 @@ export default function Dashboard() {
                       Student Management System
 
                     </Typography>
+                    <Button sx={{marginLeft:4}} variant="contained" color="error"  onClick={()=>{logoutAction()}}>Logout</Button>
+
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
