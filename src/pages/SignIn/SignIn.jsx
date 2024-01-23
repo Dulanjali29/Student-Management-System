@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import { Link } from 'react-router-dom';
 import instance from '../../service/AxiosOrder';
 import { useState } from 'react';
+import Alert from '../../common/Alert/Alert'
 
 export default function SignIn(){
 
@@ -23,10 +24,11 @@ export default function SignIn(){
       console.log(response.data.token);
       localStorage.setItem('stmToken',response.data.token);
       window.location.reload();
-
+      Alert('success','Success Registration','User Login Successful!')
     })
     .catch(function (error) {
       console.log(error);
+
     });
   }
     return(

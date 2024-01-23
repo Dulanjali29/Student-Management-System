@@ -8,8 +8,7 @@ import Box from "@mui/material/Box";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import instance from '../../service/AxiosOrder';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
+import Alert from '../../common/Alert/Alert';
 
 export default function SignUp(){
 
@@ -25,15 +24,13 @@ const [password,setPassword]=useState("")
   })
   .then(function (response) {
     console.log(response);
-    <Alert severity="success">
-  <AlertTitle>Success</AlertTitle>
-  User Registration Successful..!
-</Alert>
+    Alert('success','Success..','User Registration Successful!')
     
 
   })
   .catch(function (error) {
     console.log(error);
+    Alert('error','Oops..','Something Went Wrong!')
   });
 
  }
