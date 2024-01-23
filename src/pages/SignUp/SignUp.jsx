@@ -6,11 +6,37 @@ import Card from "@mui/material/Card";
 import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import instance from '../../service/AxiosOrder';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 export default function SignUp(){
-  // const signUp(){
 
-  // }
+const [usernm,setUsernm]=useState("")
+const [email,setEmail]=useState("")
+const [password,setPassword]=useState("")
+
+ const registerAction = () => {
+  instance.post('/register', {
+    name:usernm,
+    email: email,
+    password:password
+  })
+  .then(function (response) {
+    console.log(response);
+    <Alert severity="success">
+  <AlertTitle>Success</AlertTitle>
+  User Registration Successful..!
+</Alert>
+    
+
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+ }
     return(
         <div>
              <Card sx={{minWidth:300,maxWidth:350,padding:5}}   >
@@ -31,6 +57,8 @@ export default function SignUp(){
                  id="usernm"
                   label="Name *" 
                   variant="outlined" 
+                 value={usernm}
+                  onChange={(val)=>setUsernm(val.target.value)}
                   />
                  <TextField
                 sx={{margin:1}}
@@ -38,20 +66,24 @@ export default function SignUp(){
                  id="email"
                   label="E mail * " 
                   variant="outlined" 
+                 value={email}
+                  onChange={(val)=>setEmail(val.target.value)}
                   />
                   <TextField
                 sx={{margin:1}}
                 fullWidth
-                 id="oupassword"
+                 id="password"
                  type='password'
                   label="Password * " 
                   variant="outlined" 
+                 value={password}
+                  onChange={(val)=>setPassword(val.target.value)}
                   />
                 </Box>
                 
 
                   <Box sx={{display:'flex',justifyContent:'center',marginTop:2,width:330,marginLeft:1}}>
-                  <Button variant="contained" fullWidth onClick={()=>{SignUp()}} >SIGN UP</Button>
+                  <Button variant="contained" fullWidth onClick={registerAction} >SIGN UP</Button>
                   </Box>
                   <Box sx={{fontSize:'0.1rem',display:'flex',justifyContent:'end',marginTop:2}}>
                  

@@ -7,13 +7,17 @@ import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
 import { Link } from 'react-router-dom';
 import instance from '../../service/AxiosOrder';
+import { useState } from 'react';
 
 export default function SignIn(){
 
+  const [email,setEmail]=useState("")
+  const [password,setPassword]=useState("")
+
   const loginAction=()=>{
     instance.post('/login', {
-      email: 'dulanji30@gmail.com',
-      password: '1234'
+      email: email,
+      password: password
     })
     .then(function (response) {
       console.log(response.data.token);
@@ -43,9 +47,11 @@ export default function SignIn(){
                  <TextField
                 sx={{margin:1}}
                 fullWidth
-                 id="username"
+                 id="email"
                   label="E mail * " 
                   variant="outlined" 
+                
+                  onChange={(val)=>setEmail(val.target.value)}
                   />
                   <TextField
                 sx={{margin:1}}
@@ -53,13 +59,14 @@ export default function SignIn(){
                  id="password"
                  type='password'
                   label="Password * " 
-                  variant="outlined" 
+                  
+                  onChange={(val)=>setPassword(val.target.value)}
                   />
                 </Box>
                 
 
                   <Box sx={{display:'flex',justifyContent:'center',marginTop:2 ,width:330,marginLeft:1}}>
-                  <Button variant="contained" fullWidth onClick={()=>{loginAction()}} >SIGN IN</Button>
+                  <Button variant="contained" fullWidth onClick={loginAction} >SIGN IN</Button>
                   </Box>
                   <Box sx={{fontSize:'0.1rem',display:'flex',justifyContent:'end',marginTop:2}}>
                   

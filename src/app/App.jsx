@@ -15,6 +15,7 @@ const [signin,setSignin]=useState(false);
 useEffect(()=>{
 const key=localStorage.getItem('stmToken')
 console.log(key);
+
 if(key!==null){
   setSignin(true);
 }else{
