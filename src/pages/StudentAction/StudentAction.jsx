@@ -5,89 +5,62 @@ import { TextField } from "@mui/material";
 import Card from "@mui/material/Card";
 import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
+import Alert from '../../common/Alert/Alert'
+import { useState } from 'react';
+import instance from '../../service/AxiosOrder';
 
-import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+
+
 
 
 export default function StudentAction() {
+const [name,setName]=useState("")
+const [age,setAge]=useState("")
+const [address,setAddress]=useState("")
+const [contact,setContact]=useState("")
 
-    // const Search = styled('div')(({ theme }) => ({
-    //     position: 'relative',
-    //     borderRadius: theme.shape.borderRadius,
-    //     backgroundColor: alpha(theme.palette.common.white, 0.15),
-    //     '&:hover': {
-    //         backgroundColor: alpha(theme.palette.common.white, 0.25),
-    //     },
-    //     marginLeft: 0,
-    //     width: '100%',
-    //     [theme.breakpoints.up('sm')]: {
-    //         marginLeft: theme.spacing(1),
-    //         width: 'auto',
-    //     },
-    // }));
+const saveStudent= () => {
+    instance.post('/student/save', {
+        student_name:name,
+        student_age: age,
+        student_address:address,
+        student_contact:contact
+      })
+      .then(function (response) {
+        console.log(response);
+        Alert('success','Success..','Student Saved Successful !')
+        clearFields()
     
-    // const SearchIconWrapper = styled('div')(({ theme }) => ({
-    //     padding: theme.spacing(0, 2),
-    //     height: '100%',
-    //     position: 'absolute',
-    //     pointerEvents: 'none',
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    // }));
-    
-    // const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    //     color: 'inherit',
-    //     width: '100%',
-    //     '& .MuiInputBase-input': {
-    //         padding: theme.spacing(1, 1, 1, 0),
-    //         // vertical padding + font size from searchIcon
-    //         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    //         transition: theme.transitions.create('width'),
-    //         [theme.breakpoints.up('sm')]: {
-    //             width: '12ch',
-    //             '&:focus': {
-    //                 width: '20ch',
-    //             },
-    //         },
-    //     },
-    // }));
+      })
+      .catch(function (error) {
+        console.log(error);
+        Alert('error','Oops..','Something Went Wrong!')
+      });
+
+}
+const deleteStudent=()=>{
+    console.log("deleted !");
+}
+ const clearFields=()=>{
+    setName("");
+    setAge("");
+    setAddress("");
+    setContact("");
+ }  
     return (
         
         <div>
             <Box sx={{display:'flex',justifyContent:'center'}}>
             <Card sx={{ minWidth: 600, maxWidth: 1400,height:500, padding: 5 ,marginTop:5,backgroundColor:'#E0FFFF'}}   >
-                {/* <Box sx={{display:'flex', justifyContent:'center'}}>
-                <Avatar
-        alt="Remy Sharp"
-        src="../src/assets/user1.png"
-        sx={{ width: 60, height: 60 }}
-      />   
-                </Box> */}
+           
                 <Box sx={{ display: 'flex', justifyContent: 'center' ,color:'#4169E1' }}>
                     <h1 >Student Information</h1>
                 </Box >
                 <Box >
                 <Box sx={{ flexGrow: 1,paddingTop:3}}>
                 <AppBar position="static">
-                    {/* <Toolbar sx={{backgroundColor:'#6495ED'}}>
-                       
-
-                        <Search>
-                            <SearchIconWrapper>
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Search Student"
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
-                        </Search>
-                    </Toolbar> */}
+                   
                 </AppBar>
             </Box>
             <Box>
@@ -95,32 +68,36 @@ export default function StudentAction() {
                     <TextField
                         sx={{ margin: 1, width: 400 }}
 
-                        id="student_name"
+                        id="name"
                         label="Name *"
                         variant="outlined"
+                        onChange={(val)=>setName(val.target.value)}
                     />
                     <TextField
                         sx={{ margin: 1, width: 400 }}
                         fullWidth
-                        id="student_age"
+                        id="age"
                         label="Age * "
                         variant="outlined"
+                        onChange={(val)=>setAge(val.target.value)}
                     />
                     </Box>
                    <Box>
                    <TextField
                         sx={{ margin: 1, width: 400 }}
                         fullWidth
-                        id="student_address"
+                        id="address"
                         label="Address * "
                         variant="outlined"
+                        onChange={(val)=>setAddress(val.target.value)}
                     />
                     <TextField
                         sx={{ margin: 1, width: 400 }}
                         fullWidth
-                        id="student_contact"
+                        id="contact"
                         label="Contact NO * "
                         variant="outlined"
+                        onChange={(val)=>setContact(val.target.value)}
                     />
                    </Box>
                    </Box>
@@ -129,13 +106,13 @@ export default function StudentAction() {
 
                 <Box sx={{ display: 'flex', justifyContent: 'end' ,marginTop:2,marginRight:1 }}>
                     <Box sx={{ marginTop: 2, width: 200, marginLeft: 1 }}>
-                        <Button variant="contained" fullWidth >Save</Button>
+                        <Button variant="contained" fullWidth onClick={()=>saveStudent()}>Save</Button>
                     </Box>
                     <Box sx={{  marginTop: 2, width: 200, marginLeft: 3 }}>
                         <Button variant="contained" fullWidth >Update</Button>
                     </Box>
                     <Box sx={{  marginTop: 2, width: 200, marginLeft: 3 }}>
-                        <Button variant="contained" fullWidth  onClick={()=>{deleted()}} >Delete</Button>
+                        <Button variant="contained" fullWidth  onClick={()=>{deleteStudent()}} >Delete</Button>
                     </Box>
                   
                 </Box>

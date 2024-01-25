@@ -25,6 +25,7 @@ const [password,setPassword]=useState("")
   .then(function (response) {
     console.log(response);
     Alert('success','Success..','User Registration Successful!')
+    clearFields()
     
 
   })
@@ -33,6 +34,11 @@ const [password,setPassword]=useState("")
     Alert('error','Oops..','Something Went Wrong!')
   });
 
+ }
+ const clearFields= () =>{
+  setUsernm("");
+  setEmail("");
+  setPassword("");
  }
     return(
         <div>
