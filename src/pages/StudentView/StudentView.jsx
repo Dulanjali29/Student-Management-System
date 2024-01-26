@@ -2,7 +2,8 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useEffect,useState } from 'react';
 import instance from '../../service/AxiosOrder';
-
+import  Button  from '@mui/material/Button';
+import Alert from '../../common/Alert/Alert';
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -11,7 +12,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-
+import  IconButton  from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
@@ -58,6 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 export default function StudentView() {
     const [data, setData] = useState([])
+   
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
@@ -65,9 +68,38 @@ export default function StudentView() {
         { field: 'age', headerName: 'Age', type:'number',width: 130 },
         { field: 'address', headerName: 'Address', width: 200 },
         { field: 'contact', headerName: 'Contact', width: 200},
-    
-    ];   
+        {
+            field: 'actions',
+            headerName: 'Actions',
+            width: 200,
+            renderCell: (params) => (
+              <div>
+             
+                <IconButton
+                  color='error'
+                  aria-label="delete"
+                  onClick={() => deleteStudent(params.row.id)}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </div>
+            ),
+          },
+    ]; 
 
+    const deleteStudent=(id)=>{
+        instance.delete('/student/delete/'+id)
+        // console.log(id)
+        .then(response => {
+          console.log(response)
+          Alert('success','Success..','Student Delete Successful !')
+          window.location.reload()
+        })
+        .catch(error => {
+          console.error(error);
+          Alert('error','Oops..','Something Went Wrong!')
+        });
+    }
 
     useEffect(() => {
         instance({
@@ -91,7 +123,6 @@ export default function StudentView() {
            
             setData(array);
     
-       
           });
       }, []);
     
@@ -106,6 +137,7 @@ export default function StudentView() {
             >
                 Student Details
             </Typography>
+
             <Box sx={{ flexGrow: 1,paddingTop:3}}>
                 <AppBar position="static">
                     <Toolbar sx={{backgroundColor:'#6495ED'}}>
@@ -120,6 +152,7 @@ export default function StudentView() {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
+                        {/* <Button sx={{marginLeft:4}} variant="contained" color="error"   onChange={(val)=>setId(val.target.value)} onClick={()=>{deleteStudent(params.row.id)}}>Delete</Button> */}
                     </Toolbar>
                 </AppBar>
             </Box>

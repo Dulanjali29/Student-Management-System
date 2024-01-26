@@ -15,7 +15,7 @@ import AppBar from '@mui/material/AppBar';
 
 
 export default function StudentAction() {
-    
+
 const [name,setName]=useState("")
 const [age,setAge]=useState("")
 const [address,setAddress]=useState("")
@@ -30,8 +30,9 @@ const saveStudent= () => {
       })
       .then(function (response) {
         console.log(response);
+       
         Alert('success','Success..','Student Saved Successful !')
-        clearFields()
+       clearFields()
     
       })
       .catch(function (error) {
@@ -40,10 +41,9 @@ const saveStudent= () => {
       });
 
 }
-const deleteStudent=()=>{
-    console.log("deleted !");
-}
+
  const clearFields=()=>{
+  
     setName("");
     setAge("");
     setAddress("");
@@ -72,6 +72,7 @@ const deleteStudent=()=>{
                         id="name"
                         label="Name *"
                         variant="outlined"
+                        value={name}
                         onChange={(val)=>setName(val.target.value)}
                     />
                     <TextField
@@ -80,6 +81,7 @@ const deleteStudent=()=>{
                         id="age"
                         label="Age * "
                         variant="outlined"
+                        value={age}
                         onChange={(val)=>setAge(val.target.value)}
                     />
                     </Box>
@@ -90,6 +92,7 @@ const deleteStudent=()=>{
                         id="address"
                         label="Address * "
                         variant="outlined"
+                        value={address}
                         onChange={(val)=>setAddress(val.target.value)}
                     />
                     <TextField
@@ -98,6 +101,7 @@ const deleteStudent=()=>{
                         id="contact"
                         label="Contact NO * "
                         variant="outlined"
+                        value={contact}
                         onChange={(val)=>setContact(val.target.value)}
                     />
                    </Box>
@@ -110,11 +114,11 @@ const deleteStudent=()=>{
                         <Button variant="contained" fullWidth onClick={()=>saveStudent()}>Save</Button>
                     </Box>
                     <Box sx={{  marginTop: 2, width: 200, marginLeft: 3 }}>
-                        <Button variant="contained" fullWidth >Update</Button>
+                        <Button variant="contained" fullWidth onClick={()=>clearFields()}>Clear</Button>
                     </Box>
-                    <Box sx={{  marginTop: 2, width: 200, marginLeft: 3 }}>
+                    {/* <Box sx={{  marginTop: 2, width: 200, marginLeft: 3 }}>
                         <Button variant="contained" fullWidth  onClick={()=>{deleteStudent()}} >Delete</Button>
-                    </Box>
+                    </Box> */}
                   
                 </Box>
 
