@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import { useEffect,useState } from 'react';
+import instance from '../../service/AxiosOrder';
 
 
 import { styled, alpha } from '@mui/material/styles';
@@ -10,30 +12,9 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
-const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'name', headerName: 'Name', width: 200 },
-    { field: 'age', headerName: 'Age', width: 130 },
 
-    {
-        field: 'address',
-        headerName: 'Address',
 
-        width: 250,
 
-    },
-    {
-        field: 'contact',
-        headerName: 'Contact',
-        type: 'number',
-        width: 150,
-    },
-];
-
-const rows = [
-    { id: 1, name: 'Dulanji', age: 45, address: 'Dodangaslanda', contact: '0774545458' },
-    { id: 2, name: 'Gihani', age: 35, address: 'kandy', contact: '0778686867' },
-];
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -76,6 +57,45 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 export default function StudentView() {
+    const [data, setData] = useState([])
+
+    const columns = [
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'name', headerName: 'Name', width: 200 },
+        { field: 'age', headerName: 'Age', type:'number',width: 130 },
+        { field: 'address', headerName: 'Address', width: 200 },
+        { field: 'contact', headerName: 'Contact', width: 200},
+    
+    ];   
+
+
+    useEffect(() => {
+        instance({
+          method: 'get',
+          url: '/student/getAll',
+        })
+          .then(function (response) {
+            console.log(response.data);
+            const array = [];
+            response.data.forEach(val => {
+              array.push({
+                id: val.id,
+                name: val.student_name,
+                age: val.student_age,
+                address: val.student_address,
+                contact: val.student_contact,
+               
+              });
+             
+            });
+           
+            setData(array);
+    
+       
+          });
+      }, []);
+    
+    
     return (
         <div >
             <Typography
@@ -107,9 +127,14 @@ export default function StudentView() {
 
                 <div style={{ height: 400, width: '100%' ,paddingTop:30}}>
                     <DataGrid
-                        rows={rows}
+                        rows={data}
                         columns={columns}
-                      
+                        initialState={{
+                            pagination: {
+                              paginationModel: { page: 0, pageSize: 10 },
+                            },
+                          }}
+                          pageSizeOptions={[5, 10]}
                         checkboxSelection
                     />
                 </div>
