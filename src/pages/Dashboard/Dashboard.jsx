@@ -145,7 +145,7 @@ export default function Dashboard() {
                       Student Management System
 
                     </Typography>
-                    <Button sx={{marginLeft:4}} variant="contained" color="error"  onClick={()=>{logoutAction()}}>Logout</Button>
+                    <Button sx={{marginLeft:100,borderRadius:10}} variant="contained" color="error"  onClick={()=>{logoutAction()}}>Logout</Button>
 
                 </Toolbar>
             </AppBar>
