@@ -16,17 +16,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 
-export default function DialogCad({open,close,id,children,updateStudent}){
+export default function DialogCad({open,close,children,updateStudent,updateData}){
 
+    console.log(updateData);
+    const [name, setName] = useState(updateData?.name);
+    const [age, setAge] = useState(updateData?.age);
+    const [address, setAddress] = useState(updateData?.address);
+    const [contact, setContact] = useState(updateData?.contact);
 
-    const [name, setName] = useState("")
-    const [age, setAge] = useState("")
-    const [address, setAddress] = useState("")
-    const [contact, setContact] = useState("")
-
-    const updateData = () => {
-        console.log(id);
-        instance.put('/student/update/'+id, {
+    const updateStudentData = () => {
+       
+        instance.put('/student/update/'+updateData.id, {
             student_name: name,
             student_age: age,
             student_address: address,
@@ -119,7 +119,7 @@ export default function DialogCad({open,close,id,children,updateStudent}){
 
                 <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2, marginRight: 5 }}>
                     <Box sx={{ marginTop: 2, width: 200, marginLeft: 5 }}>
-                        <Button variant="contained" fullWidth onClick={() => updateData()}>Update</Button>
+                        <Button variant="contained" fullWidth onClick={() => updateStudentData()}>Update</Button>
                     </Box>
                     <Box sx={{ marginTop: 2, width: 200, marginLeft: 3 }}>
                         <Button variant="contained" fullWidth onClick={() => close()}>Back</Button>

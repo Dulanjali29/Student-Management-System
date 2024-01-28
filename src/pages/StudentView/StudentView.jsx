@@ -4,19 +4,17 @@ import { useEffect,useState } from 'react';
 import instance from '../../service/AxiosOrder';
 import  Button  from '@mui/material/Button';
 import Alert from '../../common/Alert/Alert';
-import axios from 'axios';
 
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+
 import  IconButton  from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { Link,Navigate } from 'react-router-dom';
-import EditStudent from '../../component/DialogCad/DialogCad';
+
+
+import DialogCad from '../../component/DialogCad/DialogCad';
 
 
 
@@ -24,15 +22,15 @@ import EditStudent from '../../component/DialogCad/DialogCad';
 export default function StudentView() {
     const [data, setData] = useState([])
     const [popup,setPopup]=useState(false);
-    const [updateId,setUpdateId]=useState()
+    const [updateData,setUpdateData]=useState()
    
 
     const deleteStudent=(id)=>{
         instance.delete('/student/delete/'+id)
-        // console.log(id)
+     
         .then(response => {
           console.log(response)
-         getData()
+         getStudentData()
 
         })
         .catch(error => {
@@ -40,20 +38,23 @@ export default function StudentView() {
           Alert('error','Oops..','Something Went Wrong!')
         });
     }
+
     const updateStudent=()=>{
-      getData()
+      getStudentData()
       closePopup()
     }
-    const openPopup=(id)=>{
-      setPopup(true)
-      setUpdateId(id)
-     
 
-      console.log(id);
+
+    const openPopup=(val)=>{
+      setPopup(true)
+      setUpdateData(val)
+      
     }
+
     const closePopup=()=>{
       setPopup(false)
     }
+
       const columns = [
           { field: 'id', headerName: 'ID', width: 70 },
           { field: 'name', headerName: 'Name', width: 200 },
@@ -77,7 +78,7 @@ export default function StudentView() {
                   <IconButton
                     color='success'
                     aria-label="edit"
-                    onClick={() =>{ openPopup(params.row.id)}}
+                    onClick={() =>{ openPopup(params.row)}}
                   >
                     <EditIcon />
                   </IconButton>
@@ -87,13 +88,13 @@ export default function StudentView() {
             },
       ]; 
 
-    const getData=()=>{
+    const getStudentData=()=>{
       instance({
         method: 'get',
         url: '/student/getAll',
       })
         .then(function (response) {
-          console.log(response.data);
+         
           const array = [];
           response.data.forEach(val => {
             array.push({
@@ -112,7 +113,7 @@ export default function StudentView() {
         });
     }
     useEffect(() => {
-      getData(setData)
+      getStudentData(setData)
       }, []);
     
     
@@ -142,7 +143,7 @@ export default function StudentView() {
                           pageSizeOptions={[5, 10]}
                         checkboxSelection
                     />
-                    <EditStudent open={popup} close={closePopup} id={updateId} update={()=>updateStudent()}/>
+                    <DialogCad open={popup} close={closePopup} updateData={updateData} updateStudent={()=>updateStudent()}/>
                 </div>
            
         </div>
