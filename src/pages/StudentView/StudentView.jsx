@@ -22,7 +22,7 @@ import DialogCad from '../../component/DialogCad/DialogCad';
 export default function StudentView() {
     const [data, setData] = useState([])
     const [popup,setPopup]=useState(false);
-    const [updateData,setUpdateData]=useState()
+    const [updateId,setUpdateId]=useState()
    
 
     const deleteStudent=(id)=>{
@@ -45,9 +45,9 @@ export default function StudentView() {
     }
 
 
-    const openPopup=(val)=>{
+    const openPopup=(id)=>{
       setPopup(true)
-      setUpdateData(val)
+      setUpdateId(id)
       
     }
 
@@ -143,7 +143,7 @@ export default function StudentView() {
                           pageSizeOptions={[5, 10]}
                         checkboxSelection
                     />
-                    <DialogCad open={popup} close={closePopup} updateData={updateData} updateStudent={()=>updateStudent()}/>
+                    <DialogCad open={popup} close={closePopup} updateStudent={()=>updateStudent()}/>
                 </div>
            
         </div>
