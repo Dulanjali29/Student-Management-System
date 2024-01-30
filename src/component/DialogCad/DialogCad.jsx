@@ -16,17 +16,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 
-export default function DialogCad({open,close,id,children,updateStudent}){
+export default function DialogCad({open,close,children,updateStudent,updateData}){
 
-   
-    const [name, setName] = useState("");
-    const [age, setAge] = useState("");
-    const [address, setAddress] = useState("");
-    const [contact, setContact] = useState("");
-
+    
+    const [name, setName] = useState(updateData?.name);
+    const [age, setAge] = useState(updateData?.age);
+    const [address, setAddress] = useState(updateData?.address);
+    const [contact, setContact] = useState(updateData?.contact);
+    
     const updateStudentData = () => {
        
-        instance.put('/student/update/'+id, {
+        instance.put('/student/update/'+updateData.id, {
             student_name: name,
             student_age: age,
             student_address: address,

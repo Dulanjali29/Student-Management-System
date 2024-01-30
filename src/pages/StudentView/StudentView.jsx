@@ -13,16 +13,12 @@ import  IconButton  from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-
 import DialogCad from '../../component/DialogCad/DialogCad';
-
-
-
 
 export default function StudentView() {
     const [data, setData] = useState([])
     const [popup,setPopup]=useState(false);
-    const [updateId,setUpdateId]=useState()
+    const [updateData,setUpdateData]=useState()
    
 
     const deleteStudent=(id)=>{
@@ -44,10 +40,9 @@ export default function StudentView() {
       closePopup()
     }
 
-
-    const openPopup=(id)=>{
+    const openPopup=(val)=>{
       setPopup(true)
-      setUpdateId(id)
+      setUpdateData(val)
       
     }
 
@@ -143,7 +138,10 @@ export default function StudentView() {
                           pageSizeOptions={[5, 10]}
                         checkboxSelection
                     />
-                    <DialogCad open={popup} close={closePopup} updateStudent={()=>updateStudent()}/>
+                    {popup &&
+                      <DialogCad open={popup} close={closePopup} updateData ={updateData} updateStudent={()=>updateStudent()}/>
+                    }
+                    
                 </div>
            
         </div>
