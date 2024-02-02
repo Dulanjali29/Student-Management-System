@@ -11,8 +11,8 @@ import instance from '../../service/AxiosOrder';
 import Alert from '../../common/Alert/Alert';
 
 export default function SignUp() {
- 
-  const [usernm,setUsernm]=useState("")
+
+  const [usernm, setUsernm] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 

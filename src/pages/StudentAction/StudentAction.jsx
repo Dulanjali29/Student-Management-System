@@ -66,7 +66,7 @@ export default function StudentAction() {
                             </AppBar>
                         </Box>
                         <Box>
-                           
+
                             <Box sx={{ marginTop: 3 }}>
 
                                 <TextField
@@ -119,9 +119,7 @@ export default function StudentAction() {
                         <Box sx={{ marginTop: 2, width: 200, marginLeft: 3 }}>
                             <Button variant="contained" fullWidth onClick={() => clearFields()}>Clear</Button>
                         </Box>
-                        {/* <Box sx={{  marginTop: 2, width: 200, marginLeft: 3 }}>
-                        <Button variant="contained" fullWidth  onClick={()=>{deleteStudent()}} >Delete</Button>
-                    </Box> */}
+
 
                     </Box>
 

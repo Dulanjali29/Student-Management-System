@@ -20,11 +20,9 @@ import { Button } from '@mui/material';
 
 import { Route, Routes, Navigate, Link } from 'react-router-dom'
 import routes from '../../common/Navigation/routes';
+import StudentView from '../StudentView/StudentView';
 
 
-
-
-// import logo from "../../assets/logo.png"
 
 const drawerWidth = 240;
 
@@ -126,29 +124,23 @@ export default function Dashboard() {
                         onClick={handleDrawerOpen}
                         edge="start"
                         sx={{
-                            marginRight: 5,
+                            marginRight: 6,
                             ...(open && { display: 'none' }),
                         }}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                   {/* < Box
-                        component="img"
-                        sx={{
-                            height: 60,
-                            width:60
-                        }}
-                        alt="your logo."
-                        src={logo}
-                    /> */}
+                  
                       Student Management System
 
                     </Typography>
                     <Button sx={{marginLeft:100,borderRadius:10}} variant="contained" color="error"  onClick={()=>{logoutAction()}}>Logout</Button>
 
                 </Toolbar>
+               
             </AppBar>
+        
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
@@ -159,8 +151,9 @@ export default function Dashboard() {
                 <List>
                     {
                         routes.map((val) => (
-                            <Link key={val.key} to={val.path} style={{ textDecoration: 'none' }}>
-                                <ListItem disablePadding sx={{ display: 'block' }}>
+                           
+                           <Link key={val.key} to={val.path} style={{ textDecoration: 'none' }}>
+                                <ListItem disablePadding sx={{ display: 'block' }}> 
                                     <ListItemButton
                                         sx={{
                                             minHeight: 48,
@@ -183,13 +176,14 @@ export default function Dashboard() {
                 <Divider />
 
             </Drawer>
+           
             <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor: 1000 }}>
                 <DrawerHeader />
 
                 <Box>
                     <Routes>
                         {getRoutes(routes)}
-                        <Route path={'*'} element={<Navigate to={'/dasboard'} />} />
+                        <Route path={'*'} element={<Navigate to={'/studentview'} />} />
                         {/* <Route  path={'/dashboard'} element={<Dashboard/>}/>
                         <Route  path={'/studentview'} element={<StudentView/>}/> */}
                     </Routes>
@@ -198,6 +192,7 @@ export default function Dashboard() {
 
 
             </Box>
+
         </Box>
     );
 }
