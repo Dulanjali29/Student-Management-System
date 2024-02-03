@@ -16,7 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 
-export default function DialogCad({open,close,children,updateStudent,updateData}){
+export default function DialogCad({open,close,updateStudent,updateData}){
 
     
     const [name, setName] = useState(updateData?.name);
@@ -60,7 +60,7 @@ export default function DialogCad({open,close,children,updateStudent,updateData}
       onClose={close}
       aria-describedby="alert-dialog-slide-description"
       >
-       {children}  
+     
         <div>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Card sx={{ minWidth: 500, maxWidth: 1400, height: 450, padding: 5,  backgroundColor: '#E0FFFF' }}   >

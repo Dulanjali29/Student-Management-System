@@ -61,13 +61,7 @@ export default function StudentView() {
       renderCell: (params) => (
         <Box>
 
-          <IconButton
-            color='error'
-            aria-label="delete"
-            onClick={() => deleteStudent(params.row.id)}
-          >
-            <DeleteIcon />
-          </IconButton>
+        
           <IconButton
             color='success'
             aria-label="edit"
@@ -75,7 +69,13 @@ export default function StudentView() {
           >
             <EditIcon />
           </IconButton>
-
+          <IconButton
+            color='error'
+            aria-label="delete"
+            onClick={() => deleteStudent(params.row.id)}
+          >
+            <DeleteIcon />
+          </IconButton>
         </Box>
       ),
     },
