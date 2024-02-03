@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import { Margin } from "@mui/icons-material";
 import { TextField } from "@mui/material";
 import Card from "@mui/material/Card";
 import Button from '@mui/material/Button';
@@ -8,14 +6,11 @@ import Box from "@mui/material/Box";
 import Alert from '../../common/Alert/Alert'
 import { useState } from 'react';
 import instance from '../../service/AxiosOrder';
-
 import AppBar from '@mui/material/AppBar';
 
 
-
-
 export default function StudentAction() {
-    const [id, setId] = useState("")
+   
     const [name, setName] = useState("")
     const [age, setAge] = useState("")
     const [address, setAddress] = useState("")
@@ -30,7 +25,7 @@ export default function StudentAction() {
         })
             .then(function (response) {
                 console.log(response);
-
+               
                 Alert('success', 'Success..', 'Student Saved Successful !')
                 clearFields()
 

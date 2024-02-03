@@ -2,13 +2,9 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
 import instance from '../../service/AxiosOrder';
-import Button from '@mui/material/Button';
 import Alert from '../../common/Alert/Alert';
-
 import Box from '@mui/material/Box';
-
 import Typography from '@mui/material/Typography';
-
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -27,7 +23,7 @@ export default function StudentView() {
       .then(response => {
         console.log(response)
         
-        Alert('Delete', 'Delete Student', 'Student Delete Successful !')
+        Alert('success', 'Delete Student', 'Student Delete Successful !')
         getStudentData()
 
       })
