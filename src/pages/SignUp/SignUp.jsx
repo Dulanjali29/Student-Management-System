@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import instance from '../../service/AxiosOrder';
 import Alert from '../../common/Alert/Alert';
+import img1 from '../../assets/images/user1.png';
 
 export default function SignUp() {
 
@@ -45,7 +46,7 @@ export default function SignUp() {
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Avatar
             alt="Remy Sharp"
-            src="../src/assets/user1.png"
+            src={img1}
             sx={{ width: 60, height: 60 }}
           />
         </Box>

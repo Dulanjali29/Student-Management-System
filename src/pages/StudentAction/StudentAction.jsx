@@ -16,8 +16,10 @@ export default function StudentAction() {
     const [address, setAddress] = useState("")
     const [contact, setContact] = useState("")
 
+  
     const saveStudent = () => {
         instance.post('/student/save', {
+          
             student_name: name,
             student_age: age,
             student_address: address,
@@ -72,6 +74,10 @@ export default function StudentAction() {
                                     variant="outlined"
                                     value={name}
                                     onChange={(val) => setName(val.target.value)}
+                                    // error={name === ""}
+                                    // helperText={name === "" ? 'Empty!' : ' '}
+                                   
+                              
                                 />
                                 <TextField
                                     sx={{ margin: 1, width: 400 }}
@@ -101,6 +107,8 @@ export default function StudentAction() {
                                     variant="outlined"
                                     value={contact}
                                     onChange={(val) => setContact(val.target.value)}
+                                
+                                 
                                 />
                             </Box>
                         </Box>

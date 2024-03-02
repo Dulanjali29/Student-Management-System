@@ -80,7 +80,6 @@ export default function StudentView() {
       ),
     },
   ];
-
   const getStudentData = () => {
     instance({
       method: 'get',
@@ -108,8 +107,6 @@ export default function StudentView() {
   useEffect(() => {
     getStudentData(setData)
   }, []);
-
-
   return (
     <div >
       <Typography

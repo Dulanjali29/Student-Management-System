@@ -5,7 +5,7 @@ import SignUp from '../pages/SignUp/SignUp'
 import SignIn from '../pages/SignIn/SignIn'
 import Box from '@mui/material/Box';
 import { Route, Routes, Link, Navigate } from 'react-router-dom'
-
+import './App.css'
 
 
 function App() {

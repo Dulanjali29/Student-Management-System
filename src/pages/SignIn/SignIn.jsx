@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import instance from '../../service/AxiosOrder';
 import { useState } from 'react';
 import Alert from '../../common/Alert/Alert'
+import img1 from '../../assets/images/user1.png';
 
 export default function SignIn() {
 
@@ -37,7 +38,7 @@ export default function SignIn() {
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Avatar
             alt="Remy Sharp"
-            src="../src/assets/user1.png"
+            src={img1}
             sx={{ width: 60, height: 80 }}
           />
         </Box>
@@ -45,7 +46,7 @@ export default function SignIn() {
           <h1 >Sign in</h1>
         </Box>
         <Box sx={{ marginRight: 2 }}>
-
+         
           <TextField
             sx={{ margin: 1 }}
             fullWidth
